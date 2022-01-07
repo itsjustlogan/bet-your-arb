@@ -1,0 +1,63 @@
+@use '../utils' as *;
+
+.center--middle {
+  @include centerAbsolute;
+}
+
+.center--horizontal {
+  @include centerHorizontal;
+}
+
+.center--vertical {
+  @include centerVertical;
+}
+
+.max--width {
+  max-width: 100%;
+}
+
+.full--width {
+  width: 100%;
+}
+
+.full--height {
+  height: 100%;
+}
+
+.transition {
+  transition: .2s ease-in-out;
+}
+
+.fade--in {
+  animation: fadein .4s ease-in;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.bounce--fade--in {
+  animation: bouncefadein .4s ease-out;
+}
+
+@keyframes bouncefadein {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

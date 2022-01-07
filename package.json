@@ -1,0 +1,22 @@
+{
+  "name": "bet_your_arb",
+  "version": "1.0.0",
+  "description": "",
+  "source": "public/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rm -rf dist & parcel",
+    "build": "rm -rf dist & parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@capacitor/android": "^3.3.4",
+    "@capacitor/cli": "^3.3.4",
+    "@capacitor/core": "^3.3.4",
+    "@parcel/transformer-sass": "^2.0.1",
+    "eslint": "^8.4.1",
+    "parcel": "^2.0.1"
+  }
+}

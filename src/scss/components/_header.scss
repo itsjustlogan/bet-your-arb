@@ -1,0 +1,9 @@
+@use '../utils' as u;
+
+.app-header {
+  background-color: u.$secondary;
+  width: 100vw;
+  text-align: center;
+  text-transform: uppercase;
+  padding-block: 1em;
+}
