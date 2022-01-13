@@ -1,14 +1,5 @@
-//@ts-ignore
-const app = Vue.createApp({
-  data() {
-    return {
-      title: 'Bet Your Arb!',
-    }
-  },
-})
-
-app.component('calculator', {
-  template: `
+<template>
+  <main class="main--content full--width center--middle">
     <form @submit.prevent class="calculator">
       <input v-model="siteOne" id="site-one" type="number" min="0" max="100" step="any" placeholder="Site One" required/>
       <input v-model="siteTwo" id="site-two" type="number" min="0" max="100" step="any" placeholder="Site Two" required/>
@@ -25,11 +16,17 @@ app.component('calculator', {
         <p>Profit is approximately: {{ profitRate }}%</p>
         <p>Wager Site One <span>(unbiased)</span>:{{ siteOneWager }}</p>
         <p>Wager Site Two <span>(unbiased)</span>:{{ siteTwoWager }}</p>
-        <p>Profit if selection one wins: \${{ siteOneProfitVal }} </p>
-        <p>Profit if selection one wins: \${{ siteTwoProfitVal }} </p>
+        <p>Profit if selection one wins: ${{ siteOneProfitVal }} </p>
+        <p>Profit if selection one wins: ${{ siteTwoProfitVal }} </p>
       </div>
     </div>
-  `,
+  </main>
+</template>
+
+<script lang="ts">
+
+export default {
+  name: 'Calculator',
   data() {
     return {
       siteOne: null as number,
@@ -47,6 +44,16 @@ app.component('calculator', {
     }
   },
   methods: {
+    calcWager(siteOdds: number): number {
+      return parseFloat( ((( (1/siteOdds)*100) * this.stake)/this.margin).toFixed(2) )
+    },
+    calcProfitValue(siteWager: number, otherSiteWager: number, siteOdds: number): number {
+      return parseFloat((((siteWager * siteOdds)-siteWager)-otherSiteWager).toFixed(2))
+    },
+    calcProfitRate(valueOne: number, valueTwo: number): number {
+      return parseFloat(((((valueOne + valueTwo)/2)/this.stake)*100).toFixed(2))
+    },
+
     reset() {
       this.siteOne = null
       this.siteTwo = null
@@ -55,22 +62,13 @@ app.component('calculator', {
     getMargin() {
       this.margin = parseFloat( ( ( (1/this.siteOne) + (1/this.siteTwo) ) *100).toFixed(2) ) 
     },
-    calcWager(siteOdds: number) {
-      return parseFloat( ((( (1/siteOdds)*100) * this.stake)/this.margin).toFixed(2) )
-    },
     getWager() {
       this.siteOneWager = this.calcWager(this.siteOne)
       this.siteTwoWager = this.calcWager(this.siteTwo)
     },
-    calcProfitValue(siteWager: number, otherSiteWager: number, siteOdds: number) {
-      return parseFloat((((siteWager * siteOdds)-siteWager)-otherSiteWager).toFixed(2))
-    },
     getProfitValue() {
       this.siteOneProfitVal = this.calcProfitValue(this.siteOneWager, this.siteTwoWager, this.siteOne)
       this.siteTwoProfitVal = this.calcProfitValue(this.siteTwoWager, this.siteOneWager, this.siteTwo)
-    },
-    calcProfitRate(valueOne: number, valueTwo: number) {
-      return parseFloat(((((valueOne + valueTwo)/2)/this.stake)*100).toFixed(2))
     },
     getProfitRate() {
       this.profitRate = this.calcProfitRate(this.siteOneProfitVal, this.siteTwoProfitVal)
@@ -92,7 +90,7 @@ app.component('calculator', {
       this.getProfitValue()
       this.getProfitRate()
     },
-  },
-})
 
-app.mount('#app')
+  },
+}
+</script>

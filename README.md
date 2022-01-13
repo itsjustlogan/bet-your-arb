@@ -1,6 +1,6 @@
 # Bet Your Arb
 
-**Version 1.0.0**
+**Version 1.0.1**
 
 ![Logo](/public/favicon.ico)
 
