@@ -6,8 +6,6 @@
 
 ## **Description**
 
----
-
 Being a longtime sports bettor, I have gotten tired of getting beat by the books, and losing on what should be "guranteed bets". Be it because, a player had a bad night, the coach is resting the star player, or the team has let off the gas after qualifying for the playoffs, losing never feels good.
 
 Now after recently finding out about arbitrage betting, I have set out the goal of building an app that would help me locate arbitrage betting opportuninties. This is my opportunity to beat the books, and provide an application to help others do the same.
@@ -20,13 +18,9 @@ Currently this app has the functions to identify an arbitrage opportuninty and c
 
 ## **Future Features**
 
----
-
 - Consume sportsbook stats from api
 - add odds conversion function so its usable with any odds type.
 
 ## **License & Copyright**
-
----
 
 &copy; Justin Logan 2022 | MIT
